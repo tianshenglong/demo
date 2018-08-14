@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinochem.dao.MatchPersonEnterpriseMapper">
+    <resultMap id="BaseResultMap" type="com.sinochem.model.MatchPersonEnterprise">
+        <!--@mbggenerated-->
+        <id column="id" jdbcType="VARBINARY" property="id" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="enabled" jdbcType="DECIMAL" property="enabled" />
+        <result column="Column_8" jdbcType="CHAR" property="column8" />
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sinochem.model.MatchPersonEnterpriseWithBLOBs">
+        <!--@mbggenerated-->
+        <result column="enterprise_id" jdbcType="VARBINARY" property="enterpriseId" />
+        <result column="enterprise_udb_id" jdbcType="VARBINARY" property="enterpriseUdbId" />
+        <result column="match_maker_id" jdbcType="VARBINARY" property="matchMakerId" />
+        <result column="creator" jdbcType="VARBINARY" property="creator" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        id, create_time, enabled, Column_8
+    </sql>
+    <sql id="Blob_Column_List">
+        <!--@mbggenerated-->
+        enterprise_id, enterprise_udb_id, match_maker_id, creator
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="byte[]" resultMap="ResultMapWithBLOBs">
+        <!--@mbggenerated-->
+        select 
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        from match_person_enterprise
+        where id = #{id,jdbcType=VARBINARY}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="byte[]">
+        <!--@mbggenerated-->
+        delete from match_person_enterprise
+        where id = #{id,jdbcType=VARBINARY}
+    </delete>
+    <insert id="insert" parameterType="com.sinochem.model.MatchPersonEnterpriseWithBLOBs">
+        <!--@mbggenerated-->
+        insert into match_person_enterprise (id, create_time, enabled, 
+            Column_8, enterprise_id, enterprise_udb_id, 
+            match_maker_id, creator)
+        values (#{id,jdbcType=VARBINARY}, #{createTime,jdbcType=TIMESTAMP}, #{enabled,jdbcType=DECIMAL}, 
+            #{column8,jdbcType=CHAR}, #{enterpriseId,jdbcType=VARBINARY}, #{enterpriseUdbId,jdbcType=VARBINARY}, 
+            #{matchMakerId,jdbcType=VARBINARY}, #{creator,jdbcType=VARBINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sinochem.model.MatchPersonEnterpriseWithBLOBs">
+        <!--@mbggenerated-->
+        insert into match_person_enterprise
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="column8 != null">
+                Column_8,
+            </if>
+            <if test="enterpriseId != null">
+                enterprise_id,
+            </if>
+            <if test="enterpriseUdbId != null">
+                enterprise_udb_id,
+            </if>
+            <if test="matchMakerId != null">
+                match_maker_id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARBINARY},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="column8 != null">
+                #{column8,jdbcType=CHAR},
+            </if>
+            <if test="enterpriseId != null">
+                #{enterpriseId,jdbcType=VARBINARY},
+            </if>
+            <if test="enterpriseUdbId != null">
+                #{enterpriseUdbId,jdbcType=VARBINARY},
+            </if>
+            <if test="matchMakerId != null">
+                #{matchMakerId,jdbcType=VARBINARY},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARBINARY},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinochem.model.MatchPersonEnterpriseWithBLOBs">
+        <!--@mbggenerated-->
+        update match_person_enterprise
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="column8 != null">
+                Column_8 = #{column8,jdbcType=CHAR},
+            </if>
+            <if test="enterpriseId != null">
+                enterprise_id = #{enterpriseId,jdbcType=VARBINARY},
+            </if>
+            <if test="enterpriseUdbId != null">
+                enterprise_udb_id = #{enterpriseUdbId,jdbcType=VARBINARY},
+            </if>
+            <if test="matchMakerId != null">
+                match_maker_id = #{matchMakerId,jdbcType=VARBINARY},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARBINARY},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARBINARY}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sinochem.model.MatchPersonEnterpriseWithBLOBs">
+        <!--@mbggenerated-->
+        update match_person_enterprise
+        set create_time = #{createTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL},
+            Column_8 = #{column8,jdbcType=CHAR},
+            enterprise_id = #{enterpriseId,jdbcType=VARBINARY},
+            enterprise_udb_id = #{enterpriseUdbId,jdbcType=VARBINARY},
+            match_maker_id = #{matchMakerId,jdbcType=VARBINARY},
+            creator = #{creator,jdbcType=VARBINARY}
+        where id = #{id,jdbcType=VARBINARY}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sinochem.model.MatchPersonEnterprise">
+        <!--@mbggenerated-->
+        update match_person_enterprise
+        set create_time = #{createTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL},
+            Column_8 = #{column8,jdbcType=CHAR}
+        where id = #{id,jdbcType=VARBINARY}
+    </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinochem.dao.MatchCategoryMapper">
+    <resultMap id="BaseResultMap" type="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        <id column="good_id" jdbcType="INTEGER" property="goodId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="enabled" jdbcType="DECIMAL" property="enabled" />
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        <result column="good_name" jdbcType="VARBINARY" property="goodName" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        good_id, create_time, enabled
+    </sql>
+    <sql id="Blob_Column_List">
+        <!--@mbggenerated-->
+        good_name
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        <!--@mbggenerated-->
+        select 
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        from match_category
+        where good_id = #{goodId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbggenerated-->
+        delete from match_category
+        where good_id = #{goodId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        insert into match_category (good_id, create_time, enabled, 
+            good_name)
+        values (#{goodId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{enabled,jdbcType=DECIMAL}, 
+            #{goodName,jdbcType=VARBINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        insert into match_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goodId != null">
+                good_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="goodName != null">
+                good_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goodId != null">
+                #{goodId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="goodName != null">
+                #{goodName,jdbcType=VARBINARY},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        update match_category
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="goodName != null">
+                good_name = #{goodName,jdbcType=VARBINARY},
+            </if>
+        </set>
+        where good_id = #{goodId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        update match_category
+        set create_time = #{createTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL},
+            good_name = #{goodName,jdbcType=VARBINARY}
+        where good_id = #{goodId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sinochem.model.MatchCategory">
+        <!--@mbggenerated-->
+        update match_category
+        set create_time = #{createTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL}
+        where good_id = #{goodId,jdbcType=INTEGER}
+    </update>
+</mapper>

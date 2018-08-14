@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinochem.dao.MatchMarketMapper">
+    <resultMap id="BaseResultMap" type="com.sinochem.model.MatchMarket">
+        <!--@mbggenerated-->
+        <id column="market_id" jdbcType="INTEGER" property="marketId" />
+        <result column="statistics_date" jdbcType="DATE" property="statisticsDate" />
+        <result column="good_id" jdbcType="VARCHAR" property="goodId" />
+        <result column="new_price" jdbcType="VARCHAR" property="newPrice" />
+        <result column="average_place" jdbcType="VARCHAR" property="averagePlace" />
+        <result column="vol" jdbcType="VARCHAR" property="vol" />
+        <result column="buyer_commission" jdbcType="DECIMAL" property="buyerCommission" />
+        <result column="seller_commission" jdbcType="DECIMAL" property="sellerCommission" />
+        <result column="creator" jdbcType="VARCHAR" property="creator" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="modifyor" jdbcType="VARCHAR" property="modifyor" />
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+        <result column="enabled" jdbcType="DECIMAL" property="enabled" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        market_id, statistics_date, good_id, new_price, average_place, vol, buyer_commission, 
+        seller_commission, creator, create_time, modifyor, modify_time, enabled
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbggenerated-->
+        select 
+        <include refid="Base_Column_List" />
+        from match_market
+        where market_id = #{marketId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbggenerated-->
+        delete from match_market
+        where market_id = #{marketId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.sinochem.model.MatchMarket">
+        <!--@mbggenerated-->
+        insert into match_market (market_id, statistics_date, good_id, 
+            new_price, average_place, vol, 
+            buyer_commission, seller_commission, creator, 
+            create_time, modifyor, modify_time, 
+            enabled)
+        values (#{marketId,jdbcType=INTEGER}, #{statisticsDate,jdbcType=DATE}, #{goodId,jdbcType=VARCHAR}, 
+            #{newPrice,jdbcType=VARCHAR}, #{averagePlace,jdbcType=VARCHAR}, #{vol,jdbcType=VARCHAR}, 
+            #{buyerCommission,jdbcType=DECIMAL}, #{sellerCommission,jdbcType=DECIMAL}, #{creator,jdbcType=VARCHAR}, 
+            #{createTime,jdbcType=TIMESTAMP}, #{modifyor,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+            #{enabled,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sinochem.model.MatchMarket">
+        <!--@mbggenerated-->
+        insert into match_market
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="marketId != null">
+                market_id,
+            </if>
+            <if test="statisticsDate != null">
+                statistics_date,
+            </if>
+            <if test="goodId != null">
+                good_id,
+            </if>
+            <if test="newPrice != null">
+                new_price,
+            </if>
+            <if test="averagePlace != null">
+                average_place,
+            </if>
+            <if test="vol != null">
+                vol,
+            </if>
+            <if test="buyerCommission != null">
+                buyer_commission,
+            </if>
+            <if test="sellerCommission != null">
+                seller_commission,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyor != null">
+                modifyor,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="marketId != null">
+                #{marketId,jdbcType=INTEGER},
+            </if>
+            <if test="statisticsDate != null">
+                #{statisticsDate,jdbcType=DATE},
+            </if>
+            <if test="goodId != null">
+                #{goodId,jdbcType=VARCHAR},
+            </if>
+            <if test="newPrice != null">
+                #{newPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="averagePlace != null">
+                #{averagePlace,jdbcType=VARCHAR},
+            </if>
+            <if test="vol != null">
+                #{vol,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerCommission != null">
+                #{buyerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="sellerCommission != null">
+                #{sellerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyor != null">
+                #{modifyor,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinochem.model.MatchMarket">
+        <!--@mbggenerated-->
+        update match_market
+        <set>
+            <if test="statisticsDate != null">
+                statistics_date = #{statisticsDate,jdbcType=DATE},
+            </if>
+            <if test="goodId != null">
+                good_id = #{goodId,jdbcType=VARCHAR},
+            </if>
+            <if test="newPrice != null">
+                new_price = #{newPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="averagePlace != null">
+                average_place = #{averagePlace,jdbcType=VARCHAR},
+            </if>
+            <if test="vol != null">
+                vol = #{vol,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerCommission != null">
+                buyer_commission = #{buyerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="sellerCommission != null">
+                seller_commission = #{sellerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyor != null">
+                modifyor = #{modifyor,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where market_id = #{marketId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sinochem.model.MatchMarket">
+        <!--@mbggenerated-->
+        update match_market
+        set statistics_date = #{statisticsDate,jdbcType=DATE},
+            good_id = #{goodId,jdbcType=VARCHAR},
+            new_price = #{newPrice,jdbcType=VARCHAR},
+            average_place = #{averagePlace,jdbcType=VARCHAR},
+            vol = #{vol,jdbcType=VARCHAR},
+            buyer_commission = #{buyerCommission,jdbcType=DECIMAL},
+            seller_commission = #{sellerCommission,jdbcType=DECIMAL},
+            creator = #{creator,jdbcType=VARCHAR},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            modifyor = #{modifyor,jdbcType=VARCHAR},
+            modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL}
+        where market_id = #{marketId,jdbcType=INTEGER}
+    </update>
+</mapper>

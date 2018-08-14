@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinochem.dao.MatchTemplateMapper">
+    <resultMap id="BaseResultMap" type="com.sinochem.model.MatchTemplate">
+        <!--@mbggenerated-->
+        <id column="template_id" jdbcType="INTEGER" property="templateId" />
+        <result column="deposit" jdbcType="INTEGER" property="deposit" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+        <result column="enabled" jdbcType="DECIMAL" property="enabled" />
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sinochem.model.MatchTemplateWithBLOBs">
+        <!--@mbggenerated-->
+        <result column="good_name" jdbcType="VARBINARY" property="goodName" />
+        <result column="origin_place" jdbcType="VARBINARY" property="originPlace" />
+        <result column="good_stand" jdbcType="VARBINARY" property="goodStand" />
+        <result column="place" jdbcType="VARBINARY" property="place" />
+        <result column="warehouse" jdbcType="VARBINARY" property="warehouse" />
+        <result column="creator" jdbcType="VARBINARY" property="creator" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        template_id, deposit, create_time, modify_time, enabled
+    </sql>
+    <sql id="Blob_Column_List">
+        <!--@mbggenerated-->
+        good_name, origin_place, good_stand, place, warehouse, creator
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        <!--@mbggenerated-->
+        select 
+        <include refid="Base_Column_List" />
+        ,
+        <include refid="Blob_Column_List" />
+        from match_template
+        where template_id = #{templateId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbggenerated-->
+        delete from match_template
+        where template_id = #{templateId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.sinochem.model.MatchTemplateWithBLOBs">
+        <!--@mbggenerated-->
+        insert into match_template (template_id, deposit, create_time, 
+            modify_time, enabled, good_name, 
+            origin_place, good_stand, place, 
+            warehouse, creator)
+        values (#{templateId,jdbcType=INTEGER}, #{deposit,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+            #{modifyTime,jdbcType=TIMESTAMP}, #{enabled,jdbcType=DECIMAL}, #{goodName,jdbcType=VARBINARY}, 
+            #{originPlace,jdbcType=VARBINARY}, #{goodStand,jdbcType=VARBINARY}, #{place,jdbcType=VARBINARY}, 
+            #{warehouse,jdbcType=VARBINARY}, #{creator,jdbcType=VARBINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sinochem.model.MatchTemplateWithBLOBs">
+        <!--@mbggenerated-->
+        insert into match_template
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="templateId != null">
+                template_id,
+            </if>
+            <if test="deposit != null">
+                deposit,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="goodName != null">
+                good_name,
+            </if>
+            <if test="originPlace != null">
+                origin_place,
+            </if>
+            <if test="goodStand != null">
+                good_stand,
+            </if>
+            <if test="place != null">
+                place,
+            </if>
+            <if test="warehouse != null">
+                warehouse,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="templateId != null">
+                #{templateId,jdbcType=INTEGER},
+            </if>
+            <if test="deposit != null">
+                #{deposit,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="goodName != null">
+                #{goodName,jdbcType=VARBINARY},
+            </if>
+            <if test="originPlace != null">
+                #{originPlace,jdbcType=VARBINARY},
+            </if>
+            <if test="goodStand != null">
+                #{goodStand,jdbcType=VARBINARY},
+            </if>
+            <if test="place != null">
+                #{place,jdbcType=VARBINARY},
+            </if>
+            <if test="warehouse != null">
+                #{warehouse,jdbcType=VARBINARY},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARBINARY},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinochem.model.MatchTemplateWithBLOBs">
+        <!--@mbggenerated-->
+        update match_template
+        <set>
+            <if test="deposit != null">
+                deposit = #{deposit,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="goodName != null">
+                good_name = #{goodName,jdbcType=VARBINARY},
+            </if>
+            <if test="originPlace != null">
+                origin_place = #{originPlace,jdbcType=VARBINARY},
+            </if>
+            <if test="goodStand != null">
+                good_stand = #{goodStand,jdbcType=VARBINARY},
+            </if>
+            <if test="place != null">
+                place = #{place,jdbcType=VARBINARY},
+            </if>
+            <if test="warehouse != null">
+                warehouse = #{warehouse,jdbcType=VARBINARY},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARBINARY},
+            </if>
+        </set>
+        where template_id = #{templateId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sinochem.model.MatchTemplateWithBLOBs">
+        <!--@mbggenerated-->
+        update match_template
+        set deposit = #{deposit,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL},
+            good_name = #{goodName,jdbcType=VARBINARY},
+            origin_place = #{originPlace,jdbcType=VARBINARY},
+            good_stand = #{goodStand,jdbcType=VARBINARY},
+            place = #{place,jdbcType=VARBINARY},
+            warehouse = #{warehouse,jdbcType=VARBINARY},
+            creator = #{creator,jdbcType=VARBINARY}
+        where template_id = #{templateId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sinochem.model.MatchTemplate">
+        <!--@mbggenerated-->
+        update match_template
+        set deposit = #{deposit,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL}
+        where template_id = #{templateId,jdbcType=INTEGER}
+    </update>
+</mapper>

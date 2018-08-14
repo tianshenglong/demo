@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinochem.dao.MatchRecordMapper">
+    <resultMap id="BaseResultMap" type="com.sinochem.model.MatchRecord">
+        <!--@mbggenerated-->
+        <id column="record_id" jdbcType="VARCHAR" property="recordId" />
+        <result column="match_buyer_id" jdbcType="VARCHAR" property="matchBuyerId" />
+        <result column="match_seller_id" jdbcType="VARCHAR" property="matchSellerId" />
+        <result column="buyer_ent_id" jdbcType="VARCHAR" property="buyerEntId" />
+        <result column="buyer_udb_id" jdbcType="VARCHAR" property="buyerUdbId" />
+        <result column="seller_ent_id" jdbcType="VARCHAR" property="sellerEntId" />
+        <result column="seller_udb_id" jdbcType="VARCHAR" property="sellerUdbId" />
+        <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+        <result column="order_code" jdbcType="VARCHAR" property="orderCode" />
+        <result column="deal_type" jdbcType="CHAR" property="dealType" />
+        <result column="match_good_id" jdbcType="INTEGER" property="matchGoodId" />
+        <result column="match_good_standard" jdbcType="INTEGER" property="matchGoodStandard" />
+        <result column="match_origin_id" jdbcType="INTEGER" property="matchOriginId" />
+        <result column="date_delivery" jdbcType="VARCHAR" property="dateDelivery" />
+        <result column="place_id" jdbcType="INTEGER" property="placeId" />
+        <result column="warehouse" jdbcType="CHAR" property="warehouse" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="quantity" jdbcType="DECIMAL" property="quantity" />
+        <result column="uom_key" jdbcType="VARCHAR" property="uomKey" />
+        <result column="uom_name" jdbcType="VARCHAR" property="uomName" />
+        <result column="deposit" jdbcType="INTEGER" property="deposit" />
+        <result column="total_price" jdbcType="DECIMAL" property="totalPrice" />
+        <result column="buyer_commission" jdbcType="DECIMAL" property="buyerCommission" />
+        <result column="seller_commission" jdbcType="DECIMAL" property="sellerCommission" />
+        <result column="match_way" jdbcType="CHAR" property="matchWay" />
+        <result column="float_deposit" jdbcType="DECIMAL" property="floatDeposit" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="modify_timie" jdbcType="TIMESTAMP" property="modifyTimie" />
+        <result column="enabled" jdbcType="DECIMAL" property="enabled" />
+        <result column="buyer_creator" jdbcType="VARCHAR" property="buyerCreator" />
+        <result column="seller_creator" jdbcType="VARCHAR" property="sellerCreator" />
+        <result column="state" jdbcType="CHAR" property="state" />
+        <result column="deal_time" jdbcType="TIMESTAMP" property="dealTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        record_id, match_buyer_id, match_seller_id, buyer_ent_id, buyer_udb_id, seller_ent_id, 
+        seller_udb_id, order_id, order_code, deal_type, match_good_id, match_good_standard, 
+        match_origin_id, date_delivery, place_id, warehouse, price, quantity, uom_key, uom_name, 
+        deposit, total_price, buyer_commission, seller_commission, match_way, float_deposit, 
+        remark, modify_timie, enabled, buyer_creator, seller_creator, state, deal_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbggenerated-->
+        select 
+        <include refid="Base_Column_List" />
+        from match_record
+        where record_id = #{recordId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--@mbggenerated-->
+        delete from match_record
+        where record_id = #{recordId,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.sinochem.model.MatchRecord">
+        <!--@mbggenerated-->
+        insert into match_record (record_id, match_buyer_id, match_seller_id, 
+            buyer_ent_id, buyer_udb_id, seller_ent_id, 
+            seller_udb_id, order_id, order_code, 
+            deal_type, match_good_id, match_good_standard, 
+            match_origin_id, date_delivery, place_id, 
+            warehouse, price, quantity, 
+            uom_key, uom_name, deposit, 
+            total_price, buyer_commission, seller_commission, 
+            match_way, float_deposit, remark, 
+            modify_timie, enabled, buyer_creator, 
+            seller_creator, state, deal_time
+            )
+        values (#{recordId,jdbcType=VARCHAR}, #{matchBuyerId,jdbcType=VARCHAR}, #{matchSellerId,jdbcType=VARCHAR}, 
+            #{buyerEntId,jdbcType=VARCHAR}, #{buyerUdbId,jdbcType=VARCHAR}, #{sellerEntId,jdbcType=VARCHAR}, 
+            #{sellerUdbId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{orderCode,jdbcType=VARCHAR}, 
+            #{dealType,jdbcType=CHAR}, #{matchGoodId,jdbcType=INTEGER}, #{matchGoodStandard,jdbcType=INTEGER}, 
+            #{matchOriginId,jdbcType=INTEGER}, #{dateDelivery,jdbcType=VARCHAR}, #{placeId,jdbcType=INTEGER}, 
+            #{warehouse,jdbcType=CHAR}, #{price,jdbcType=DECIMAL}, #{quantity,jdbcType=DECIMAL}, 
+            #{uomKey,jdbcType=VARCHAR}, #{uomName,jdbcType=VARCHAR}, #{deposit,jdbcType=INTEGER}, 
+            #{totalPrice,jdbcType=DECIMAL}, #{buyerCommission,jdbcType=DECIMAL}, #{sellerCommission,jdbcType=DECIMAL}, 
+            #{matchWay,jdbcType=CHAR}, #{floatDeposit,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+            #{modifyTimie,jdbcType=TIMESTAMP}, #{enabled,jdbcType=DECIMAL}, #{buyerCreator,jdbcType=VARCHAR}, 
+            #{sellerCreator,jdbcType=VARCHAR}, #{state,jdbcType=CHAR}, #{dealTime,jdbcType=TIMESTAMP}
+            )
+    </insert>
+    <insert id="insertSelective" parameterType="com.sinochem.model.MatchRecord">
+        <!--@mbggenerated-->
+        insert into match_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="recordId != null">
+                record_id,
+            </if>
+            <if test="matchBuyerId != null">
+                match_buyer_id,
+            </if>
+            <if test="matchSellerId != null">
+                match_seller_id,
+            </if>
+            <if test="buyerEntId != null">
+                buyer_ent_id,
+            </if>
+            <if test="buyerUdbId != null">
+                buyer_udb_id,
+            </if>
+            <if test="sellerEntId != null">
+                seller_ent_id,
+            </if>
+            <if test="sellerUdbId != null">
+                seller_udb_id,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="orderCode != null">
+                order_code,
+            </if>
+            <if test="dealType != null">
+                deal_type,
+            </if>
+            <if test="matchGoodId != null">
+                match_good_id,
+            </if>
+            <if test="matchGoodStandard != null">
+                match_good_standard,
+            </if>
+            <if test="matchOriginId != null">
+                match_origin_id,
+            </if>
+            <if test="dateDelivery != null">
+                date_delivery,
+            </if>
+            <if test="placeId != null">
+                place_id,
+            </if>
+            <if test="warehouse != null">
+                warehouse,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="uomKey != null">
+                uom_key,
+            </if>
+            <if test="uomName != null">
+                uom_name,
+            </if>
+            <if test="deposit != null">
+                deposit,
+            </if>
+            <if test="totalPrice != null">
+                total_price,
+            </if>
+            <if test="buyerCommission != null">
+                buyer_commission,
+            </if>
+            <if test="sellerCommission != null">
+                seller_commission,
+            </if>
+            <if test="matchWay != null">
+                match_way,
+            </if>
+            <if test="floatDeposit != null">
+                float_deposit,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="modifyTimie != null">
+                modify_timie,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="buyerCreator != null">
+                buyer_creator,
+            </if>
+            <if test="sellerCreator != null">
+                seller_creator,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="dealTime != null">
+                deal_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="recordId != null">
+                #{recordId,jdbcType=VARCHAR},
+            </if>
+            <if test="matchBuyerId != null">
+                #{matchBuyerId,jdbcType=VARCHAR},
+            </if>
+            <if test="matchSellerId != null">
+                #{matchSellerId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerEntId != null">
+                #{buyerEntId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerUdbId != null">
+                #{buyerUdbId,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerEntId != null">
+                #{sellerEntId,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerUdbId != null">
+                #{sellerUdbId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderCode != null">
+                #{orderCode,jdbcType=VARCHAR},
+            </if>
+            <if test="dealType != null">
+                #{dealType,jdbcType=CHAR},
+            </if>
+            <if test="matchGoodId != null">
+                #{matchGoodId,jdbcType=INTEGER},
+            </if>
+            <if test="matchGoodStandard != null">
+                #{matchGoodStandard,jdbcType=INTEGER},
+            </if>
+            <if test="matchOriginId != null">
+                #{matchOriginId,jdbcType=INTEGER},
+            </if>
+            <if test="dateDelivery != null">
+                #{dateDelivery,jdbcType=VARCHAR},
+            </if>
+            <if test="placeId != null">
+                #{placeId,jdbcType=INTEGER},
+            </if>
+            <if test="warehouse != null">
+                #{warehouse,jdbcType=CHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=DECIMAL},
+            </if>
+            <if test="uomKey != null">
+                #{uomKey,jdbcType=VARCHAR},
+            </if>
+            <if test="uomName != null">
+                #{uomName,jdbcType=VARCHAR},
+            </if>
+            <if test="deposit != null">
+                #{deposit,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="buyerCommission != null">
+                #{buyerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="sellerCommission != null">
+                #{sellerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="matchWay != null">
+                #{matchWay,jdbcType=CHAR},
+            </if>
+            <if test="floatDeposit != null">
+                #{floatDeposit,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTimie != null">
+                #{modifyTimie,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="buyerCreator != null">
+                #{buyerCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerCreator != null">
+                #{sellerCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=CHAR},
+            </if>
+            <if test="dealTime != null">
+                #{dealTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sinochem.model.MatchRecord">
+        <!--@mbggenerated-->
+        update match_record
+        <set>
+            <if test="matchBuyerId != null">
+                match_buyer_id = #{matchBuyerId,jdbcType=VARCHAR},
+            </if>
+            <if test="matchSellerId != null">
+                match_seller_id = #{matchSellerId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerEntId != null">
+                buyer_ent_id = #{buyerEntId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerUdbId != null">
+                buyer_udb_id = #{buyerUdbId,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerEntId != null">
+                seller_ent_id = #{sellerEntId,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerUdbId != null">
+                seller_udb_id = #{sellerUdbId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderCode != null">
+                order_code = #{orderCode,jdbcType=VARCHAR},
+            </if>
+            <if test="dealType != null">
+                deal_type = #{dealType,jdbcType=CHAR},
+            </if>
+            <if test="matchGoodId != null">
+                match_good_id = #{matchGoodId,jdbcType=INTEGER},
+            </if>
+            <if test="matchGoodStandard != null">
+                match_good_standard = #{matchGoodStandard,jdbcType=INTEGER},
+            </if>
+            <if test="matchOriginId != null">
+                match_origin_id = #{matchOriginId,jdbcType=INTEGER},
+            </if>
+            <if test="dateDelivery != null">
+                date_delivery = #{dateDelivery,jdbcType=VARCHAR},
+            </if>
+            <if test="placeId != null">
+                place_id = #{placeId,jdbcType=INTEGER},
+            </if>
+            <if test="warehouse != null">
+                warehouse = #{warehouse,jdbcType=CHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=DECIMAL},
+            </if>
+            <if test="uomKey != null">
+                uom_key = #{uomKey,jdbcType=VARCHAR},
+            </if>
+            <if test="uomName != null">
+                uom_name = #{uomName,jdbcType=VARCHAR},
+            </if>
+            <if test="deposit != null">
+                deposit = #{deposit,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                total_price = #{totalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="buyerCommission != null">
+                buyer_commission = #{buyerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="sellerCommission != null">
+                seller_commission = #{sellerCommission,jdbcType=DECIMAL},
+            </if>
+            <if test="matchWay != null">
+                match_way = #{matchWay,jdbcType=CHAR},
+            </if>
+            <if test="floatDeposit != null">
+                float_deposit = #{floatDeposit,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTimie != null">
+                modify_timie = #{modifyTimie,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="buyerCreator != null">
+                buyer_creator = #{buyerCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerCreator != null">
+                seller_creator = #{sellerCreator,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=CHAR},
+            </if>
+            <if test="dealTime != null">
+                deal_time = #{dealTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where record_id = #{recordId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sinochem.model.MatchRecord">
+        <!--@mbggenerated-->
+        update match_record
+        set match_buyer_id = #{matchBuyerId,jdbcType=VARCHAR},
+            match_seller_id = #{matchSellerId,jdbcType=VARCHAR},
+            buyer_ent_id = #{buyerEntId,jdbcType=VARCHAR},
+            buyer_udb_id = #{buyerUdbId,jdbcType=VARCHAR},
+            seller_ent_id = #{sellerEntId,jdbcType=VARCHAR},
+            seller_udb_id = #{sellerUdbId,jdbcType=VARCHAR},
+            order_id = #{orderId,jdbcType=VARCHAR},
+            order_code = #{orderCode,jdbcType=VARCHAR},
+            deal_type = #{dealType,jdbcType=CHAR},
+            match_good_id = #{matchGoodId,jdbcType=INTEGER},
+            match_good_standard = #{matchGoodStandard,jdbcType=INTEGER},
+            match_origin_id = #{matchOriginId,jdbcType=INTEGER},
+            date_delivery = #{dateDelivery,jdbcType=VARCHAR},
+            place_id = #{placeId,jdbcType=INTEGER},
+            warehouse = #{warehouse,jdbcType=CHAR},
+            price = #{price,jdbcType=DECIMAL},
+            quantity = #{quantity,jdbcType=DECIMAL},
+            uom_key = #{uomKey,jdbcType=VARCHAR},
+            uom_name = #{uomName,jdbcType=VARCHAR},
+            deposit = #{deposit,jdbcType=INTEGER},
+            total_price = #{totalPrice,jdbcType=DECIMAL},
+            buyer_commission = #{buyerCommission,jdbcType=DECIMAL},
+            seller_commission = #{sellerCommission,jdbcType=DECIMAL},
+            match_way = #{matchWay,jdbcType=CHAR},
+            float_deposit = #{floatDeposit,jdbcType=DECIMAL},
+            remark = #{remark,jdbcType=VARCHAR},
+            modify_timie = #{modifyTimie,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL},
+            buyer_creator = #{buyerCreator,jdbcType=VARCHAR},
+            seller_creator = #{sellerCreator,jdbcType=VARCHAR},
+            state = #{state,jdbcType=CHAR},
+            deal_time = #{dealTime,jdbcType=TIMESTAMP}
+        where record_id = #{recordId,jdbcType=VARCHAR}
+    </update>
+</mapper>

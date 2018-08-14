@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.match.dao.MatchBaseMapper">
+    <resultMap id="BaseResultMap" type="com.match.model.MatchBase">
+        <!--@mbggenerated-->
+        <id column="match_id" jdbcType="VARBINARY" property="matchId" />
+        <result column="resource_id" jdbcType="VARCHAR" property="resourceId" />
+        <result column="enterprise_id" jdbcType="VARCHAR" property="enterpriseId" />
+        <result column="ent_udb_id" jdbcType="VARCHAR" property="entUdbId" />
+        <result column="match_type" jdbcType="CHAR" property="matchType" />
+        <result column="deal_type" jdbcType="CHAR" property="dealType" />
+        <result column="match_good_id" jdbcType="INTEGER" property="matchGoodId" />
+        <result column="match_good_standard" jdbcType="INTEGER" property="matchGoodStandard" />
+        <result column="match_origin_id" jdbcType="CHAR" property="matchOriginId" />
+        <result column="date_delivery" jdbcType="VARCHAR" property="dateDelivery" />
+        <result column="place_id" jdbcType="INTEGER" property="placeId" />
+        <result column="warehouse" jdbcType="CHAR" property="warehouse" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="quantity" jdbcType="DECIMAL" property="quantity" />
+        <result column="uom_key" jdbcType="VARCHAR" property="uomKey" />
+        <result column="uom_name" jdbcType="VARCHAR" property="uomName" />
+        <result column="deposit" jdbcType="INTEGER" property="deposit" />
+        <result column="commission" jdbcType="DECIMAL" property="commission" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+        <result column="state" jdbcType="CHAR" property="state" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="modify_timie" jdbcType="TIMESTAMP" property="modifyTimie" />
+        <result column="enabled" jdbcType="DECIMAL" property="enabled" />
+        <result column="creator" jdbcType="VARCHAR" property="creator" />
+        <result column="source" jdbcType="CHAR" property="source" />
+        <result column="standard" jdbcType="CHAR" property="standard" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbggenerated-->
+        match_id, resource_id, enterprise_id, ent_udb_id, match_type, deal_type, match_good_id, 
+        match_good_standard, match_origin_id, date_delivery, place_id, warehouse, price, 
+        quantity, uom_key, uom_name, deposit, commission, create_time, end_time, state, remark, 
+        modify_timie, enabled, creator, source, standard
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="byte[]" resultMap="BaseResultMap">
+        <!--@mbggenerated-->
+        select 
+        <include refid="Base_Column_List" />
+        from match_base
+        where match_id = #{matchId,jdbcType=VARBINARY}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="byte[]">
+        <!--@mbggenerated-->
+        delete from match_base
+        where match_id = #{matchId,jdbcType=VARBINARY}
+    </delete>
+    <insert id="insert" parameterType="com.match.model.MatchBase">
+        <!--@mbggenerated-->
+        insert into match_base (match_id, resource_id, enterprise_id, 
+            ent_udb_id, match_type, deal_type, 
+            match_good_id, match_good_standard, match_origin_id, 
+            date_delivery, place_id, warehouse, 
+            price, quantity, uom_key, 
+            uom_name, deposit, commission, 
+            create_time, end_time, state, 
+            remark, modify_timie, enabled, 
+            creator, source, standard
+            )
+        values (#{matchId,jdbcType=VARBINARY}, #{resourceId,jdbcType=VARCHAR}, #{enterpriseId,jdbcType=VARCHAR}, 
+            #{entUdbId,jdbcType=VARCHAR}, #{matchType,jdbcType=CHAR}, #{dealType,jdbcType=CHAR}, 
+            #{matchGoodId,jdbcType=INTEGER}, #{matchGoodStandard,jdbcType=INTEGER}, #{matchOriginId,jdbcType=CHAR}, 
+            #{dateDelivery,jdbcType=VARCHAR}, #{placeId,jdbcType=INTEGER}, #{warehouse,jdbcType=CHAR}, 
+            #{price,jdbcType=DECIMAL}, #{quantity,jdbcType=DECIMAL}, #{uomKey,jdbcType=VARCHAR}, 
+            #{uomName,jdbcType=VARCHAR}, #{deposit,jdbcType=INTEGER}, #{commission,jdbcType=DECIMAL}, 
+            #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{state,jdbcType=CHAR}, 
+            #{remark,jdbcType=VARCHAR}, #{modifyTimie,jdbcType=TIMESTAMP}, #{enabled,jdbcType=DECIMAL}, 
+            #{creator,jdbcType=VARCHAR}, #{source,jdbcType=CHAR}, #{standard,jdbcType=CHAR}
+            )
+    </insert>
+    <insert id="insertSelective" parameterType="com.match.model.MatchBase">
+        <!--@mbggenerated-->
+        insert into match_base
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="matchId != null">
+                match_id,
+            </if>
+            <if test="resourceId != null">
+                resource_id,
+            </if>
+            <if test="enterpriseId != null">
+                enterprise_id,
+            </if>
+            <if test="entUdbId != null">
+                ent_udb_id,
+            </if>
+            <if test="matchType != null">
+                match_type,
+            </if>
+            <if test="dealType != null">
+                deal_type,
+            </if>
+            <if test="matchGoodId != null">
+                match_good_id,
+            </if>
+            <if test="matchGoodStandard != null">
+                match_good_standard,
+            </if>
+            <if test="matchOriginId != null">
+                match_origin_id,
+            </if>
+            <if test="dateDelivery != null">
+                date_delivery,
+            </if>
+            <if test="placeId != null">
+                place_id,
+            </if>
+            <if test="warehouse != null">
+                warehouse,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="uomKey != null">
+                uom_key,
+            </if>
+            <if test="uomName != null">
+                uom_name,
+            </if>
+            <if test="deposit != null">
+                deposit,
+            </if>
+            <if test="commission != null">
+                commission,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="modifyTimie != null">
+                modify_timie,
+            </if>
+            <if test="enabled != null">
+                enabled,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="source != null">
+                source,
+            </if>
+            <if test="standard != null">
+                standard,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="matchId != null">
+                #{matchId,jdbcType=VARBINARY},
+            </if>
+            <if test="resourceId != null">
+                #{resourceId,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseId != null">
+                #{enterpriseId,jdbcType=VARCHAR},
+            </if>
+            <if test="entUdbId != null">
+                #{entUdbId,jdbcType=VARCHAR},
+            </if>
+            <if test="matchType != null">
+                #{matchType,jdbcType=CHAR},
+            </if>
+            <if test="dealType != null">
+                #{dealType,jdbcType=CHAR},
+            </if>
+            <if test="matchGoodId != null">
+                #{matchGoodId,jdbcType=INTEGER},
+            </if>
+            <if test="matchGoodStandard != null">
+                #{matchGoodStandard,jdbcType=INTEGER},
+            </if>
+            <if test="matchOriginId != null">
+                #{matchOriginId,jdbcType=CHAR},
+            </if>
+            <if test="dateDelivery != null">
+                #{dateDelivery,jdbcType=VARCHAR},
+            </if>
+            <if test="placeId != null">
+                #{placeId,jdbcType=INTEGER},
+            </if>
+            <if test="warehouse != null">
+                #{warehouse,jdbcType=CHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=DECIMAL},
+            </if>
+            <if test="uomKey != null">
+                #{uomKey,jdbcType=VARCHAR},
+            </if>
+            <if test="uomName != null">
+                #{uomName,jdbcType=VARCHAR},
+            </if>
+            <if test="deposit != null">
+                #{deposit,jdbcType=INTEGER},
+            </if>
+            <if test="commission != null">
+                #{commission,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTimie != null">
+                #{modifyTimie,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="source != null">
+                #{source,jdbcType=CHAR},
+            </if>
+            <if test="standard != null">
+                #{standard,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.match.model.MatchBase">
+        <!--@mbggenerated-->
+        update match_base
+        <set>
+            <if test="resourceId != null">
+                resource_id = #{resourceId,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseId != null">
+                enterprise_id = #{enterpriseId,jdbcType=VARCHAR},
+            </if>
+            <if test="entUdbId != null">
+                ent_udb_id = #{entUdbId,jdbcType=VARCHAR},
+            </if>
+            <if test="matchType != null">
+                match_type = #{matchType,jdbcType=CHAR},
+            </if>
+            <if test="dealType != null">
+                deal_type = #{dealType,jdbcType=CHAR},
+            </if>
+            <if test="matchGoodId != null">
+                match_good_id = #{matchGoodId,jdbcType=INTEGER},
+            </if>
+            <if test="matchGoodStandard != null">
+                match_good_standard = #{matchGoodStandard,jdbcType=INTEGER},
+            </if>
+            <if test="matchOriginId != null">
+                match_origin_id = #{matchOriginId,jdbcType=CHAR},
+            </if>
+            <if test="dateDelivery != null">
+                date_delivery = #{dateDelivery,jdbcType=VARCHAR},
+            </if>
+            <if test="placeId != null">
+                place_id = #{placeId,jdbcType=INTEGER},
+            </if>
+            <if test="warehouse != null">
+                warehouse = #{warehouse,jdbcType=CHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=DECIMAL},
+            </if>
+            <if test="uomKey != null">
+                uom_key = #{uomKey,jdbcType=VARCHAR},
+            </if>
+            <if test="uomName != null">
+                uom_name = #{uomName,jdbcType=VARCHAR},
+            </if>
+            <if test="deposit != null">
+                deposit = #{deposit,jdbcType=INTEGER},
+            </if>
+            <if test="commission != null">
+                commission = #{commission,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=CHAR},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTimie != null">
+                modify_timie = #{modifyTimie,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null">
+                enabled = #{enabled,jdbcType=DECIMAL},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="source != null">
+                source = #{source,jdbcType=CHAR},
+            </if>
+            <if test="standard != null">
+                standard = #{standard,jdbcType=CHAR},
+            </if>
+        </set>
+        where match_id = #{matchId,jdbcType=VARBINARY}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.match.model.MatchBase">
+        <!--@mbggenerated-->
+        update match_base
+        set resource_id = #{resourceId,jdbcType=VARCHAR},
+            enterprise_id = #{enterpriseId,jdbcType=VARCHAR},
+            ent_udb_id = #{entUdbId,jdbcType=VARCHAR},
+            match_type = #{matchType,jdbcType=CHAR},
+            deal_type = #{dealType,jdbcType=CHAR},
+            match_good_id = #{matchGoodId,jdbcType=INTEGER},
+            match_good_standard = #{matchGoodStandard,jdbcType=INTEGER},
+            match_origin_id = #{matchOriginId,jdbcType=CHAR},
+            date_delivery = #{dateDelivery,jdbcType=VARCHAR},
+            place_id = #{placeId,jdbcType=INTEGER},
+            warehouse = #{warehouse,jdbcType=CHAR},
+            price = #{price,jdbcType=DECIMAL},
+            quantity = #{quantity,jdbcType=DECIMAL},
+            uom_key = #{uomKey,jdbcType=VARCHAR},
+            uom_name = #{uomName,jdbcType=VARCHAR},
+            deposit = #{deposit,jdbcType=INTEGER},
+            commission = #{commission,jdbcType=DECIMAL},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            end_time = #{endTime,jdbcType=TIMESTAMP},
+            state = #{state,jdbcType=CHAR},
+            remark = #{remark,jdbcType=VARCHAR},
+            modify_timie = #{modifyTimie,jdbcType=TIMESTAMP},
+            enabled = #{enabled,jdbcType=DECIMAL},
+            creator = #{creator,jdbcType=VARCHAR},
+            source = #{source,jdbcType=CHAR},
+            standard = #{standard,jdbcType=CHAR}
+        where match_id = #{matchId,jdbcType=VARBINARY}
+    </update>
+</mapper>
